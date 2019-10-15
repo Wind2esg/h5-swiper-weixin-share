@@ -1,0 +1,20 @@
+/**
+ * App.css
+ * 
+ * @author wind2esg
+ * @date 20191011
+ * 
+ * this is really important for full screen swiper app.
+ */
+
+html, body, #root, .swiper-container{
+    width: 100%;
+}
+
+img{
+    width: 100%;
+}
+
+video{
+    width: 100%;
+}

@@ -12,15 +12,15 @@
 import React from 'react';
 import './App.css';
 import { Helmet } from 'react-helmet';
-import { projects } from '../Projects/projects';
+import { projects } from '../Projects/Projects';
 import { WeixinShareLink } from 'weixin-sharelink';
 import Wgswiper from 'wgswiper';
 
 // #def
-export interface Projects{
+export interface AppState{
   debug: boolean;
   htmlTitle: string;
-  contents: Array<Array<SliderContent>>;
+  contents: Array<Array<any>>;
   wechatServiceUrl: string,
   wechatServiceParams: any,
   shareTitle: string;
@@ -29,23 +29,8 @@ export interface Projects{
   shareLink: string;
 }
 
-export type SliderContent = SImg | SVideo;
-
-function IsSVideo(sliderContent: SliderContent): sliderContent is SVideo{
-  return (sliderContent as SVideo).poster !== undefined;
-}
-
-interface SImg{
-  src: string;
-}
-
-interface SVideo{
-  src: string;
-  poster: string;
-}
-
 // #App component
-export default class App extends React.Component<{}, Projects>{
+export default class App extends React.Component<{}, AppState>{
     constructor(props: any){
         super(props);
         this.state = projects;
@@ -55,16 +40,17 @@ export default class App extends React.Component<{}, Projects>{
       // wechat share
       new WeixinShareLink(
           {
-              debug: projects.debug,
-              title: projects.shareTitle,
-              desc: projects.shareDescription,
-              link: projects.shareLink,
-              imgUrl: projects.shareImgSrc
+              debug: this.state.debug,
+              title: this.state.shareTitle,
+              desc: this.state.shareDescription,
+              link: this.state.shareLink,
+              imgUrl: this.state.shareImgSrc
           },
           {
-              url: projects.wechatServiceUrl,
-              params: projects.wechatServiceParams
-          }
+              url: this.state.wechatServiceUrl,
+              params: this.state.wechatServiceParams
+          },
+          'json'
       )
 
       // swiper init
@@ -74,15 +60,13 @@ export default class App extends React.Component<{}, Projects>{
       let swiperSlide = this.state.contents.map((slider, index)=>
         (<div className="swiper-slide" key={index}>
           <div className="slide-height">
-            {slider.map((item, index)=>
-                IsSVideo(item)
-                ?
-                <video controls playsInline webkit-playsinline="true"  poster={item.poster} key={index}>
-                  <source src={item.src} type="video/mp4"></source>
-                </video>
-                :
-                <img src={item.src} alt="" key={index}></img>
-            )}
+            {slider.map((item, index)=>{
+              return (
+                <div key={index}>
+                  {item}
+                </div>
+              );
+            })}
           </div>
         </div>)
       );

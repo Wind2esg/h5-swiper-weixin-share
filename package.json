@@ -1,20 +1,20 @@
 {
-  "name": "h5-react",
-  "version": "1.0.0",
+  "name": "h5-swiper-weixin-share",
+  "version": "1.1.0",
   "private": true,
   "dependencies": {
     "@types/jest": "24.0.18",
-    "@types/node": "^12.7.12",
+    "@types/node": "^12.11.1",
     "@types/react": "16.9.5",
     "@types/react-dom": "16.9.1",
-    "@types/react-helmet": "^5.0.11",
+    "@types/react-helmet": "^5.0.12",
     "install": "^0.13.0",
     "react": "^16.10.2",
     "react-dom": "^16.10.2",
     "react-helmet": "^5.2.1",
     "react-scripts": "3.2.0",
     "typescript": "3.6.3",
-    "weixin-sharelink": "^1.0.0",
+    "weixin-sharelink": "^1.2.2",
     "wgswiper": "^1.0.0"
   },
   "scripts": {

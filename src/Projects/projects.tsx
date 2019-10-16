@@ -1,42 +1,51 @@
 /**
- * projects.tsx
+ * Projects.tsx
  * 
  * @author wind2esg
  * @date 20191011
  * 
  * basicly add todo here
  * 
- * #content     cdnUrl, slide content
- * #appProps    
+ * #slides      array for your slide content
+ * #projects    all you fill transfer to app component's state
  */
-import { Projects, SliderContent } from '../App/App';
+import React from 'react';
+import { AppState } from '../App/App';
+import { SImg, SVideo} from './ProjectsComponents';
 
-let cdnUrl: string = "";
-
-let slides: Array<Array<SliderContent>> = [
-
+let slides: Array<Array<any>> = [
+    // slide 1
     [
-        {src:``},
-        {src:``},
+        // <SImg src="" />,
+        // <SImg src="" />,
+        // <SImg src="" />,
+        // <SImg src="" />
     ],
+    // slide 2
     [
-        {src:``},
-        {src:``},
-
+        // <SImg src="" />,
+        // <SVideo src="" />,
+        // <SImg src="" />,
     ],
+    // slide 3
     [
-        {src:``},
-        {src:``, poster:``}
+        // <SImg src="" />,
+        // <SVideo src="" />,
     ]
+    // slide ...
 ];
 
-export let projects = {} as Projects;
-projects.debug = true;
+export let projects = {} as AppState;
+// the web page title
 projects.htmlTitle = "";
-projects.contents = slides;
+// params for wechat share centre service
 projects.wechatServiceUrl = "";
 projects.wechatServiceParams = {};
+// wechat share link params
+projects.debug = true;
 projects.shareTitle = "";
 projects.shareDescription = "";
 projects.shareImgSrc = "";
 projects.shareLink = (window as any).location.href;
+// slides' content
+projects.contents = slides;

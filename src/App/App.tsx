@@ -12,9 +12,9 @@
 import React from 'react';
 import './App.css';
 import { Helmet } from 'react-helmet';
-import { projects } from '../Projects/Projects';
 import { WeixinShareLink } from 'weixin-sharelink';
 import Wgswiper from 'wgswiper';
+import { projects } from '../Projects/Projects';
 
 // #def
 export interface AppState{

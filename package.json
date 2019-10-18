@@ -15,7 +15,7 @@
     "react-scripts": "3.2.0",
     "typescript": "3.6.3",
     "weixin-sharelink": "^1.2.2",
-    "wgswiper": "^1.0.0"
+    "wgswiper": "^1.1.2"
   },
   "scripts": {
     "start": "react-scripts start",

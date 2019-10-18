@@ -8,6 +8,8 @@
  */
 
 import React from 'react';
+import './ProjectsComponents.css';
+import { url } from 'inspector';
 
 interface SImgProps{
     src: string;
@@ -29,11 +31,17 @@ export class SImg extends React.Component<SImgProps>{
 }
 
 export class SVideo extends React.Component<SVideoProps>{
+    constructor(props: any){
+        super(props);
+    }
+
     render(){
         return (
-            <video controls playsInline webkit-playsinline="true"  poster={this.props.poster ? this.props.poster : ""} >
-                <source src={this.props.src} type={this.props.type ? this.props.type : "video/mp4" } ></source>
-            </video>
+            <div>
+                <video autoPlay controls playsInline webkit-playsinline="true" poster={this.props.poster}>
+                    <source src={this.props.src} type={this.props.type ? this.props.type : "video/mp4" } ></source>
+                </video>
+            </div>
         );
     }
 }

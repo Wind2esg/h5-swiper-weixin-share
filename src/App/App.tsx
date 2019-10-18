@@ -54,8 +54,16 @@ export default class App extends React.Component<{}, AppState>{
       )
 
       // swiper init
-      new Wgswiper();
-  }
+      let swiper = new Wgswiper().getSwiper();
+
+      // deal with video
+      swiper.on('slideChange', ()=>{
+        for (let video of (document.querySelectorAll('video-show') as any)) {
+          video.pause();
+        }
+      })
+
+    }
     render(){
       let swiperSlide = this.state.contents.map((slider, index)=>
         (<div className="swiper-slide" key={index}>

@@ -16,15 +16,17 @@ import { SImg, SVideo} from './ProjectsComponents';
 let slides: Array<Array<any>> = [
     // slide 1
     [
-        // <SImg src="" />,
+        // <SVideo src="" poster="" />,
+        // <SVideo src="" poster="" />,
+        // <SImg src="" />
         // <SImg src="" />,
         // <SImg src="" />,
         // <SImg src="" />
     ],
     // slide 2
     [
-        // <SImg src="" />,
-        // <SVideo src="" />,
+        // <SVideo src="" poster="" />,
+        // <SVideo src="" poster="" />
         // <SImg src="" />,
     ],
     // slide 3

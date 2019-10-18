@@ -8,7 +8,8 @@ This is a h5 template with auto-adoption vertical swiper and wechat sharelink fe
 + Make your own components in ProjectsComponents.tsx
 + `slides` is an array of slide, the slide is an array of your components. Just act like the example. 
 + Fill in `projects` as need
-
++ It is hard when in wechat env. Pay attention on `SVideo` component. **ATTENTION!!!For prevent `touchmove` on poster causing page scrolling, set `.swiper-contianer` and related parents' css `height: 100%; overflow: hidden;`**.
+  
 Friend, u gd now!  
 Fast and ez, saving time, saving life!
 

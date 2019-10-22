@@ -70,9 +70,9 @@ export default class App extends React.Component<{}, AppState>{
           <div className="slide-height">
             {slider.map((item, index)=>{
               return (
-                <div key={index}>
+                <React.Fragment key={index}>
                   {item}
-                </div>
+                </React.Fragment>
               );
             })}
           </div>

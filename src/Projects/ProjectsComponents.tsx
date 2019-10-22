@@ -37,11 +37,11 @@ export class SVideo extends React.Component<SVideoProps>{
 
     render(){
         return (
-            <div>
+            <>
                 <video autoPlay controls playsInline webkit-playsinline="true" poster={this.props.poster}>
                     <source src={this.props.src} type={this.props.type ? this.props.type : "video/mp4" } ></source>
                 </video>
-            </div>
+            </>
         );
     }
 }

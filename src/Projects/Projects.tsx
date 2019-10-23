@@ -11,23 +11,28 @@
  */
 import React from 'react';
 import { AppState } from '../App/App';
-import { SImg, SVideo} from './ProjectsComponents';
+import { SImg, SVideo, SCarousel } from './ProjectsComponents';
 
 let slides: Array<Array<any>> = [
     // slide 1
     [
-        // <SVideo src="" poster="" />,
-        // <SVideo src="" poster="" />,
-        // <SImg src="" />
-        // <SImg src="" />,
-        // <SImg src="" />,
-        // <SImg src="" />
+        <SCarousel carouselClassName="carousel" srcs={["https://res.manzhiyan.com/ppp/tvc/1.jpg", "https://res.manzhiyan.com/ppp/tvc/1.jpg","https://res.manzhiyan.com/ppp/tvc/1.jpg","https://res.manzhiyan.com/ppp/tvc/1.jpg"]} />,
+        <SVideo src="" poster="" />,
+        <SVideo src="" poster="" />,
+        <SVideo src="" poster="" />,
+        <SVideo src="" poster="" />,
+        <SVideo src="" poster="" />,
+        <SVideo src="" poster="" />,
+        <SImg src="" />,
+        <SImg src="" />,
+        <SImg src="" />,
+        <SImg src="" />
     ],
     // slide 2
     [
-        // <SVideo src="" poster="" />,
-        // <SVideo src="" poster="" />
-        // <SImg src="" />,
+        <SVideo src="" poster="" />,
+        <SVideo src="" poster="" />,
+        <SImg src="" />
     ],
     // slide 3
     [

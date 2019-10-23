@@ -11,7 +11,6 @@
 
 import React from 'react';
 import './App.css';
-import { Helmet } from 'react-helmet';
 import { WeixinShareLink } from 'weixin-sharelink';
 import Wgswiper from 'wgswiper';
 import { projects } from '../Projects/Projects';
@@ -67,7 +66,7 @@ export default class App extends React.Component<{}, AppState>{
     render(){
       let swiperSlide = this.state.contents.map((slider, index)=>
         (<div className="swiper-slide" key={index}>
-          <div className="slide-height">
+          <div className="wgswiper-slide-height">
             {slider.map((item, index)=>{
               return (
                 <React.Fragment key={index}>
@@ -79,14 +78,10 @@ export default class App extends React.Component<{}, AppState>{
         </div>)
       );
       return (
-        <div className="swiper-container" >
+        <div className="wgswiper-container swiper-container" >
           <div className="swiper-wrapper" >
             { swiperSlide }
           </div>
-          
-          <Helmet>
-          <title>{ this.state.htmlTitle }</title>
-          </Helmet>
         </div>
       );
     }

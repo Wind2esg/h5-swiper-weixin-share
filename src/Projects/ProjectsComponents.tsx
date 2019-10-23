@@ -9,17 +9,11 @@
 
 import React from 'react';
 import './ProjectsComponents.css';
-import { url } from 'inspector';
+import Swiper from 'swiper';
 
 interface SImgProps{
     src: string;
     alt?: string;
-}
-
-interface SVideoProps{
-    poster?: string;
-    src: string;
-    type?: string;
 }
 
 export class SImg extends React.Component<SImgProps>{
@@ -30,11 +24,13 @@ export class SImg extends React.Component<SImgProps>{
     }
 }
 
-export class SVideo extends React.Component<SVideoProps>{
-    constructor(props: any){
-        super(props);
-    }
+interface SVideoProps{
+    poster?: string;
+    src: string;
+    type?: string;
+}
 
+export class SVideo extends React.Component<SVideoProps>{
     render(){
         return (
             <>
@@ -42,6 +38,31 @@ export class SVideo extends React.Component<SVideoProps>{
                     <source src={this.props.src} type={this.props.type ? this.props.type : "video/mp4" } ></source>
                 </video>
             </>
+        );
+    }
+}
+
+interface SCarouselProps{
+    srcs: Array<string>;
+    carouselClassName: string;
+}
+
+export class SCarousel extends React.Component<SCarouselProps>{
+    componentDidMount(){
+        new Swiper(`.${this.props.carouselClassName}`);
+    }
+
+    render(){
+        return(
+            <div className={`swiper-container ${this.props.carouselClassName}`} >
+                <div className="swiper-wrapper" >
+                    {this.props.srcs.map((item, index)=>(
+                        <div className="swiper-slide" key={index}>
+                            <img src={item} alt="" />
+                        </div>
+                    ))}
+                </div>
+            </div>
         );
     }
 }

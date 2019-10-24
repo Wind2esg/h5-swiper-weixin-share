@@ -91,7 +91,6 @@ export class SCarousel extends React.Component<SCarouselProps>{
             :
             {}
         );
-        
     }
 
     render(){

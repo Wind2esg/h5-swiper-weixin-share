@@ -18,7 +18,6 @@ import { projects } from '../Projects/Projects';
 // #def
 export interface AppState{
   debug: boolean;
-  htmlTitle: string;
   contents: Array<Array<any>>;
   wechatServiceUrl: string,
   wechatServiceParams: any,

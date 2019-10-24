@@ -16,7 +16,7 @@ import { SImg, SVideo, SCarousel } from './ProjectsComponents';
 let slides: Array<Array<any>> = [
     // slide 1
     [
-        <SCarousel carouselClassName="carousel" srcs={["https://res.manzhiyan.com/ppp/tvc/1.jpg", "https://res.manzhiyan.com/ppp/tvc/1.jpg","https://res.manzhiyan.com/ppp/tvc/1.jpg","https://res.manzhiyan.com/ppp/tvc/1.jpg"]} />,
+        <SCarousel carouselClassName="carousel" srcs={["", "","",""]} />,
         <SVideo src="" poster="" />,
         <SVideo src="" poster="" />,
         <SVideo src="" poster="" />,
@@ -43,8 +43,6 @@ let slides: Array<Array<any>> = [
 ];
 
 export let projects = {} as AppState;
-// the web page title
-projects.htmlTitle = "";
 // params for wechat share centre service
 projects.wechatServiceUrl = "";
 projects.wechatServiceParams = {};

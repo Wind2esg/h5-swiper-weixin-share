@@ -56,7 +56,7 @@ export default class App extends React.Component<{}, AppState>{
 
       // deal with video
       swiper.on('slideChange', ()=>{
-        for (let video of (document.querySelectorAll('video-show') as any)) {
+        for (let video of (document.getElementsByTagName('video') as any)) {
           video.pause();
         }
       })

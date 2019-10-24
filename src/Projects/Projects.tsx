@@ -46,7 +46,7 @@ export let projects = {} as AppState;
 projects.wechatServiceUrl = "http://hh.manzhiyan.com/services/jssdkservice.php";
 projects.wechatServiceParams = {token:"superm", url: (window as any).location.href };
 // wechat share link params
-projects.debug = false;
+projects.debug = true;
 projects.shareTitle = "";
 projects.shareDescription = "";
 projects.shareImgSrc = "";

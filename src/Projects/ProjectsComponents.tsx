@@ -85,7 +85,8 @@ export class SCarousel extends React.Component<SCarouselProps>{
             ?
             {
                 pagination:{
-                    el: `.${this.props.paginationClassName}`
+                    el: `.${this.props.paginationClassName}`,
+                    dynamicBullets: true,
                 }
             }
             :

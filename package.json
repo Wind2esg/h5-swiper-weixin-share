@@ -1,6 +1,6 @@
 {
   "name": "h5-swiper-weixin-share",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "private": true,
   "dependencies": {
     "@types/jest": "24.0.18",
@@ -8,6 +8,7 @@
     "@types/react": "16.9.5",
     "@types/react-dom": "16.9.1",
     "@types/swiper": "^4.4.6",
+    "antd": "^3.24.2",
     "install": "^0.13.0",
     "react": "^16.10.2",
     "react-dom": "^16.10.2",
@@ -18,9 +19,9 @@
     "wgswiper": "^2.0.1"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test"
+    "start": "react-app-rewired start",
+    "build": "react-app-rewired build",
+    "test": "react-app-rewired test"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -43,5 +44,10 @@
   },
   "author": "wind2esg",
   "email": "wind2esg@gmail.com",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "babel-plugin-import": "^1.12.2",
+    "customize-cra": "^0.8.0",
+    "react-app-rewired": "^2.1.4"
+  }
 }

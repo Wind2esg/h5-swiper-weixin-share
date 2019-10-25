@@ -54,3 +54,4 @@ projects.shareImgSrc = "";
 projects.shareLink = (window as any).location.href;
 // slides' content
 projects.contents = slides;
+projects.loading = true;

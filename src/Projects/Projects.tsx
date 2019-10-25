@@ -13,7 +13,7 @@ import React from 'react';
 import { AppState } from '../App/App';
 import { SImg, SVideo, SCarousel } from './ProjectsComponents';
 
-let cdn = "https://res.manzhiyan.com/BrandDept/h5_191024/";
+let cdn = "https://res.com/";
 
 let slides: Array<Array<any>> = [
     // slide 1
@@ -45,14 +45,14 @@ let slides: Array<Array<any>> = [
 
 export let projects = {} as AppState;
 // params for wechat share centre service
-projects.wechatServiceUrl = "http://hh.manzhiyan.com/services/jssdkservice.php";
-projects.wechatServiceParams = {token:"superm", url: (window as any).location.href };
+projects.wechatServiceUrl = "";
+projects.wechatServiceParams = {};
 // wechat share link params
-projects.debug = false;
-projects.shareTitle = "科技力 x 超模肌，超模张龄月率性定义“私人定制”！";
-projects.shareDescription = "蔓之研 · 私人定制，看超模张龄月解锁N面“未来肌”！";
-projects.shareImgSrc = "https://res.manzhiyan.com/BrandDept/h5_191024/sharelogo.png";
+// projects.debug = false;
+projects.shareTitle = "";
+projects.shareDescription = "";
+projects.shareImgSrc = "";
 projects.shareLink = (window as any).location.href;
 // slides' content
 projects.contents = slides;
-projects.loading = true;
+// projects.loading = true;

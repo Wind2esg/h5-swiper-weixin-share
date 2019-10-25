@@ -18,7 +18,7 @@ import { Skeleton } from 'antd';
 
 // #def
 export interface AppState{
-  debug: boolean;
+  debug?: boolean;
   contents: Array<Array<any>>;
   wechatServiceUrl: string,
   wechatServiceParams: any,
@@ -26,76 +26,90 @@ export interface AppState{
   shareDescription: string;
   shareImgSrc: string;
   shareLink: string;
-  loading: boolean;
+  preload?: boolean;
+}
+
+interface counter{
+  num: number;
 }
 
 // #App component
 export default class App extends React.Component<{}, AppState>{
-    state = projects;
-    
+    constructor(props: any){
+      super(props);
+
+      projects.debug = projects.debug ? projects.debug : false;
+      projects.preload = projects.preload ? projects.preload : true;
+      this.state = projects;
+    }
+
     componentDidMount(){
-      let getImgSrcList = (contents: Array<Array<any>>)=>{
-        let imgSrcList: Array<string> = [];
+      let init = ()=>{
+        // wechat share
+        new WeixinShareLink(
+          {
+              debug: this.state.debug!,
+              title: this.state.shareTitle,
+              desc: this.state.shareDescription,
+              link: this.state.shareLink,
+              imgUrl: this.state.shareImgSrc
+          },
+          {
+              url: this.state.wechatServiceUrl,
+              params: this.state.wechatServiceParams
+          },
+          'json'
+        )
+
+        // swiper init
+        let swiper = new Wgswiper().getSwiper();
+
+        // deal with video
+        swiper.on('slideChange', ()=>{
+          for (let video of (document.getElementsByTagName('video') as any)) {
+            video.pause();
+          }
+        })
+      }
+
+      let imgPreload = (src: string, imgNum: counter)=>{
+        let img: HTMLImageElement = new Image();
+        imgNum.num++;
+        img.src = src;
+        console.log(`${img.src} preload starts`);
+        img.onload = ()=>{
+          imgNum.num--;
+          console.log(`${img.src} preload done, ${imgNum.num} left`);
+          if(imgNum.num === 0){
+            console.log('all preload done, start now');
+            this.setState({preload: false});
+          init();
+
+          }
+        }
+      }
+
+      let getSrcFileType = (src: string)=>{
+        return src.substr(src.length - 3, 3);
+      }
+
+      let pagePreload = (contents: Array<Array<any>>)=>{
+        let imgNum: counter = { num : 0 };
         for(let slide of contents){
           for(let item of slide){
-            if(item.type.name === 'SImg'){
-              imgSrcList.push(item.props.src);
-            }else if (item.type.name === 'SCarousel'){
+            if(item.props.src && (getSrcFileType(item.props.src) === "jpg" || getSrcFileType(item.props.src) === "png")){
+              imgPreload(item.props.src, imgNum);
+            }else if (item.props.srcs){
               for(let src of item.props.srcs){
-                imgSrcList.push(src);
+                imgPreload(src, imgNum);
               }
             }
           }
         }
-        return imgSrcList;
       }
 
-      let preload = (imgSrcList: Array<string>)=>{
-        let loaded: number = 0;
-        for(let imgSrc of imgSrcList){
-          let img: HTMLImageElement = new Image();
-          console.log(`${imgSrc} preload starts`);
-          img.src = imgSrc;
-          img.onload = ()=>{
-            loaded++;
-            console.log(`${imgSrc} preload done, ${imgSrcList.length - loaded} left`);
-            if(loaded === imgSrcList.length){
-              console.log('all preload done, start now');
-                this.setState({loading: false});
-                // wechat share
-                new WeixinShareLink(
-                  {
-                      debug: this.state.debug,
-                      title: this.state.shareTitle,
-                      desc: this.state.shareDescription,
-                      link: this.state.shareLink,
-                      imgUrl: this.state.shareImgSrc
-                  },
-                  {
-                      url: this.state.wechatServiceUrl,
-                      params: this.state.wechatServiceParams
-                  },
-                  'json'
-                )
-
-                // swiper init
-                let swiper = new Wgswiper().getSwiper();
-
-                // deal with video
-                swiper.on('slideChange', ()=>{
-                  for (let video of (document.getElementsByTagName('video') as any)) {
-                    video.pause();
-                  }
-                })
-            }
-          }
-        }
-      }
-        
-      let imgList: Array<string> = getImgSrcList(this.state.contents);
+      this.state.preload ? pagePreload(this.state.contents) : init();
       
-      preload(imgList);
-
     }
     render(){
       let swiperSlide = this.state.contents.map((slider, index)=>
@@ -110,7 +124,7 @@ export default class App extends React.Component<{}, AppState>{
         </div>)
       );
       return (
-        <Skeleton loading={this.state.loading} active={true} paragraph={{rows:15}}>
+        <Skeleton loading={this.state.preload} active={true} paragraph={{rows:15}}>
           <div className="wgswiper-container swiper-container" >
             <div className="swiper-wrapper" >
               { swiperSlide }

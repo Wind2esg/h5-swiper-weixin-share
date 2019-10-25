@@ -16,7 +16,10 @@
     "swiper": "^5.1.0",
     "typescript": "3.6.3",
     "weixin-sharelink": "^1.2.2",
-    "wgswiper": "^2.0.1"
+    "wgswiper": "^2.0.1",
+    "babel-plugin-import": "^1.12.2",
+    "customize-cra": "^0.8.0",
+    "react-app-rewired": "^2.1.4"
   },
   "scripts": {
     "start": "react-app-rewired start",
@@ -44,10 +47,5 @@
   },
   "author": "wind2esg",
   "email": "wind2esg@gmail.com",
-  "license": "MIT",
-  "devDependencies": {
-    "babel-plugin-import": "^1.12.2",
-    "customize-cra": "^0.8.0",
-    "react-app-rewired": "^2.1.4"
-  }
+  "license": "MIT"
 }

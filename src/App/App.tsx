@@ -34,19 +34,33 @@ export default class App extends React.Component<{}, AppState>{
     state = projects;
     
     componentDidMount(){
-      let preloadLength: number = 0;
-      this.state.contents.map(slider=>{
-        slider.map(item=>{
-          if(item.type.name === 'SImg'){
-            preloadLength++;
-            let img = new Image();
-            img.src = item.props.src;
-            console.log(preloadLength);
-            console.log(img.src);
-            img.onload = ()=>{
-              preloadLength--;
-              if(preloadLength === 0){
-                console.log('preload done');
+      let getImgSrcList = (contents: Array<Array<any>>)=>{
+        let imgSrcList: Array<string> = [];
+        for(let slide of contents){
+          for(let item of slide){
+            if(item.type.name === 'SImg'){
+              imgSrcList.push(item.props.src);
+            }else if (item.type.name === 'SCarousel'){
+              for(let src of item.props.srcs){
+                imgSrcList.push(src);
+              }
+            }
+          }
+        }
+        return imgSrcList;
+      }
+
+      let preload = (imgSrcList: Array<string>)=>{
+        let loaded: number = 0;
+        for(let imgSrc of imgSrcList){
+          let img: HTMLImageElement = new Image();
+          console.log(`${imgSrc} preload starts`);
+          img.src = imgSrc;
+          img.onload = ()=>{
+            loaded++;
+            console.log(`${imgSrc} preload done, ${imgSrcList.length - loaded} left`);
+            if(loaded === imgSrcList.length){
+              console.log('all preload done, start now');
                 this.setState({loading: false});
                 // wechat share
                 new WeixinShareLink(
@@ -62,50 +76,25 @@ export default class App extends React.Component<{}, AppState>{
                       params: this.state.wechatServiceParams
                   },
                   'json'
-              )
+                )
 
-              // swiper init
-              let swiper = new Wgswiper().getSwiper();
+                // swiper init
+                let swiper = new Wgswiper().getSwiper();
 
-              // deal with video
-              swiper.on('slideChange', ()=>{
-                for (let video of (document.getElementsByTagName('video') as any)) {
-                  video.pause();
-                }
-              })
-              }
+                // deal with video
+                swiper.on('slideChange', ()=>{
+                  for (let video of (document.getElementsByTagName('video') as any)) {
+                    video.pause();
+                  }
+                })
             }
           }
-          return <div />;
-        });
-        return <div />;
-      });
-
-      // // wechat share
-      // new WeixinShareLink(
-      //     {
-      //         debug: this.state.debug,
-      //         title: this.state.shareTitle,
-      //         desc: this.state.shareDescription,
-      //         link: this.state.shareLink,
-      //         imgUrl: this.state.shareImgSrc
-      //     },
-      //     {
-      //         url: this.state.wechatServiceUrl,
-      //         params: this.state.wechatServiceParams
-      //     },
-      //     'json'
-      // )
-
-      // // swiper init
-      // let swiper = new Wgswiper().getSwiper();
-
-      // // deal with video
-      // swiper.on('slideChange', ()=>{
-      //   for (let video of (document.getElementsByTagName('video') as any)) {
-      //     video.pause();
-      //   }
-      // })
+        }
+      }
+        
+      let imgList: Array<string> = getImgSrcList(this.state.contents);
+      
+      preload(imgList);
 
     }
     render(){
@@ -121,7 +110,7 @@ export default class App extends React.Component<{}, AppState>{
         </div>)
       );
       return (
-        <Skeleton loading={this.state.loading}>
+        <Skeleton loading={this.state.loading} active={true} paragraph={{rows:15}}>
           <div className="wgswiper-container swiper-container" >
             <div className="swiper-wrapper" >
               { swiperSlide }

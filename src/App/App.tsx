@@ -29,11 +29,8 @@ export interface AppState{
 
 // #App component
 export default class App extends React.Component<{}, AppState>{
-    constructor(props: any){
-        super(props);
-        this.state = projects;
-    }
-
+    state = projects;
+    
     componentDidMount(){
       // wechat share
       new WeixinShareLink(

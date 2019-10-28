@@ -41,25 +41,21 @@ interface SVideoProps{
     poster?: string;
     src: string;
     type?: string;
+    inline?: boolean;
 }
 
 export class SVideo extends React.Component<SVideoProps>{
-    render(){
-        return (
-            <>
-                <video autoPlay controls poster={this.props.poster}>
-                    <source src={this.props.src} type={this.props.type ? this.props.type : "video/mp4" } ></source>
-                </video>
-            </>
-        );
+    el: any = React.createRef();
+    componentDidMount(){
+        if(this.props.inline !== false){
+            this.el.current.setAttribute("playinline","true");
+            this.el.current.setAttribute("webkit-playsinline","true");
+        }       
     }
-}
-
-export class SVideoInline extends React.Component<SVideoProps>{
     render(){
         return (
             <>
-                <video autoPlay controls playsInline webkit-playsinline poster={this.props.poster}>
+                <video autoPlay controls poster={this.props.poster} ref={this.el}>
                     <source src={this.props.src} type={this.props.type ? this.props.type : "video/mp4" } ></source>
                 </video>
             </>

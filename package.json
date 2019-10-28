@@ -1,22 +1,22 @@
 {
   "name": "h5-swiper-weixin-share",
-  "version": "1.3.1",
+  "version": "1.3.2",
   "private": true,
   "dependencies": {
     "@types/jest": "24.0.18",
-    "@types/node": "^12.11.1",
+    "@types/node": "^12.11.7",
     "@types/react": "16.9.5",
     "@types/react-dom": "16.9.1",
     "@types/swiper": "^4.4.6",
-    "antd": "^3.24.2",
+    "antd": "^3.24.3",
     "install": "^0.13.0",
-    "react": "^16.10.2",
-    "react-dom": "^16.10.2",
+    "react": "^16.11.0",
+    "react-dom": "^16.11.0",
     "react-scripts": "3.2.0",
-    "swiper": "^5.1.0",
+    "swiper": "^5.2.0",
     "typescript": "3.6.3",
     "weixin-sharelink": "^1.2.2",
-    "wgswiper": "^2.0.1"
+    "wgswiper": "^2.0.2"
   },
   "scripts": {
     "start": "react-app-rewired start",

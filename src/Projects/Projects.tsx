@@ -21,7 +21,6 @@ let slides: Array<Array<any>> = [
         <SImg src={`${cdn}1_1.jpg`} />,
         <SCarousel carouselClassName="carousel" 
             pagination={true} 
-            paginationClassName="swiper-pagination" 
             srcs={[
                 `${cdn}1_2c1.jpg`,
                 `${cdn}1_2c2.jpg`,

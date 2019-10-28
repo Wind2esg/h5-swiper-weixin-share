@@ -27,6 +27,20 @@ Build
 `npm build`  
 Then deploy
 
+## Build-in Components and props
++ `SImg`
+  + `src`.
+  + `alt`, optional.
++ `SVideo`
+  + `src`.
+  + `type`, optional, with default value `"video/mp4"` 
+  + `inline`, when set to `false`, `playinline` and `webkit-playsinline` attributes would not be added to the video tag of the components.
++ `SCarousel`
+  + `srcs`, an array of images' src in the carousel. 
+  + `carouselClassName`, optional, with default value `"carousel"`, className of the carousel, used for initing the nested swiper. You **HAVE TO** set this if you had more than one carousel.
+  + `pagination`, optional, when set to `true`, the carousel will have pagination indicator.
+    + `paginationClassName`, optional, with default value `"swiper-pagination"`. Works **WHEN** `pagination` is true. like `carouselClassName` You **HAVE TO** set this if you had more than one carousel.
+
 ## link
 Dependencies  
 

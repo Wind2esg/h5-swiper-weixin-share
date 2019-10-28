@@ -69,19 +69,19 @@ export class SVideo extends React.Component<SVideoProps>{
  */ 
 interface SCarouselProps{
     srcs: Array<string>;
-    carouselClassName: string;
+    carouselClassName?: string;
     pagination?: boolean;
     paginationClassName?: string;
 }
 
 export class SCarousel extends React.Component<SCarouselProps>{
     componentDidMount(){
-        new Swiper(`.${this.props.carouselClassName}`, 
+        new Swiper(`.${this.props.carouselClassName ? this.props.carouselClassName : "carousel"}`, 
             this.props.pagination
             ?
             {
                 pagination:{
-                    el: `.${this.props.paginationClassName}`,
+                    el: `.${this.props.paginationClassName ? this.props.paginationClassName : "swiper-pagination"}`,
                     dynamicBullets: true,
                 }
             }
@@ -92,7 +92,7 @@ export class SCarousel extends React.Component<SCarouselProps>{
 
     render(){
         return(
-            <div className={`swiper-container ${this.props.carouselClassName}`} >
+            <div className={`swiper-container ${this.props.carouselClassName ? this.props.carouselClassName : "carousel"}`} >
                 <div className="swiper-wrapper" >
                     {this.props.srcs.map((item, index)=>(
                         <div className="swiper-slide" key={index}>
@@ -100,7 +100,7 @@ export class SCarousel extends React.Component<SCarouselProps>{
                         </div>
                     ))}
                 </div>
-                { this.props.pagination && <div className={this.props.paginationClassName}></div> }
+                { this.props.pagination && <div className={this.props.paginationClassName ? this.props.paginationClassName : "swiper-pagination"}></div> }
             </div>
         );
     }

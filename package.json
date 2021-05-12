@@ -13,7 +13,7 @@
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
     "react-scripts": "3.2.0",
-    "swiper": "^5.2.0",
+    "swiper": "^6.5.1",
     "typescript": "3.6.3",
     "weixin-sharelink": "^1.2.2",
     "wgswiper": "^2.0.2"
